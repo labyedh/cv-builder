@@ -1,0 +1,46 @@
+.blue-color{
+    color: #1C8EB5;
+}
+
+.gris-color{
+    color: #797979;
+    font-size: 12px;
+}
+.cv{
+    max-width: 900px;
+    margin: auto !important;
+    background-color: #e6e4e474;
+}
+.head{
+    display: flex;
+}
+
+@media print {
+    .container{
+        margin: 0!important;
+        padding: 0 !important;
+    }
+    .content{
+        padding-top: 0 !important;
+    }
+    .cv{
+        
+        margin-top: 0 !important;
+        padding: 0 !important;
+    }
+    nav {
+        display: none !important;
+    }
+    .head{
+        display: none !important;
+    }
+}
+
+@media (max-width: 575px){ 
+    
+    .cv{
+        max-width: 100vw;
+    }
+
+    
+}

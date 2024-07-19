@@ -1,0 +1,125 @@
+body{
+    min-height: 100vh;
+   
+}
+/* start header  */
+.image{
+   width: 150px; 
+}
+nav{
+    background-color: #FFFFFF;
+    z-index: 1000;
+}
+/* end header  */
+
+/* start body */
+.content h2{
+    color: #1A91F0;
+}
+.content .pipeline {
+    
+}
+.content .pipeline .line{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #9E9E9E;
+    z-index: 1;
+    
+}
+
+.content .stage{
+    
+    position: relative;
+}
+.content .stage .circle{
+    background-color: #FFFFFF;
+    border: 1px #9E9E9E solid;
+    z-index: 1;
+    
+}
+.content .stage::after{
+    content: attr(data-after-content);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    color: #54AFF8;
+    z-index: 2;
+    
+}
+.content .stage .circle svg{
+
+}
+.content .stage .circle i{
+    font-size: 2em; 
+    color: #54AFF8;
+}
+.content .stage span.stage-label{
+    font-size: 1em;
+    color: #4E596B;
+}
+.content .build-btn button{
+    background-image: linear-gradient(90deg, #083F9B, #7F56D9);
+    color: #FFFFFF;
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+    border-radius: 0.3rem;
+}
+
+
+@media (max-width: 991px){
+    .content h2{
+        font-size: calc(1.225rem + .4vw) !important;
+        line-height: 1.5em;
+    }
+    .content .build-btn{
+        margin-bottom: 3rem !important;
+    }
+    .content .pipeline{
+        flex-direction: column;
+    }
+    .content .pipeline .line{
+        display: none;
+    }
+    .content .stage{
+        font-size: 32px !important;
+        margin: 1em auto;
+    }
+    .content .stage .circle{
+        width: 30% !important;
+    }
+
+    
+}
+
+@media (max-width: 768px){
+
+    .content .pipeline .line{
+        display: none;
+    }
+    
+    .content .stage .circle{
+        width: 50% !important;
+    }
+    
+}
+/* end body */
+
+/* start footer */
+
+footer ul li i{
+    font-size: 1.5em;
+    color: #6c757d;
+}
+/* end footer */

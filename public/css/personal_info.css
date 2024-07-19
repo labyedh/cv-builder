@@ -1,0 +1,135 @@
+body{
+    min-height: 100vh;
+   
+}
+/* start header  */
+.image{
+   width: 150px; 
+}
+nav{
+    background-color: #FFFFFF;
+    z-index: 1000;
+}
+/* end header  */
+
+/* start body */
+.content h2{
+    color: #1A91F0;
+}
+nav .pipeline{
+    width: calc(100% - 170px);
+}
+nav .pipeline .line{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #9E9E9E;
+    z-index: 1;
+    
+}
+
+nav .stage{
+    position: relative;
+}
+nav .stage .circle{
+    background-color: #FFFFFF;
+    border: 1px #9E9E9E solid;
+    z-index: 1;
+    width: 35%;
+}
+
+nav .stage .circle i{
+    font-size: 1em; 
+    color: #54AFF8;
+}
+
+nav .stage .circle-active{
+    background-color: #54AFF8;
+}
+
+nav .stage .circle-active i{ 
+    color: #FFFFFF;
+}
+nav .stage .span-active  {
+    color: #54AFF8 !important;
+}
+nav .stage span.stage-label{
+    font-size: 0.75em;
+    color: #4E596B;
+}
+.content .build-btn button{
+    background-image: linear-gradient(90deg, #083F9B, #7F56D9);
+    color: #FFFFFF;
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+    border-radius: 0.3rem;
+}
+
+.pencil-trash{
+    background-color: transparent !important;
+     border: 0 !important;
+     
+}
+
+@media (max-width: 991px){
+    .content h2{
+        font-size: calc(1.225rem + .4vw) !important;
+        line-height: 1.5em;
+    }
+    .content .build-btn{
+        margin-bottom: 3rem !important;
+    }
+    nav .pipeline{
+        margin: auto .5rem ;
+    }
+    nav .stage{
+        font-size: 16px !important;
+       
+    }
+    nav .stage .circle{
+        width: 45% !important;
+    }
+
+    
+}
+@media (max-width: 767px){
+    
+    nav .stage{
+        font-size: 12px !important;
+       
+    }
+    nav .stage .circle{
+        width: 65% !important;
+    }
+
+    
+}
+@media (max-width: 575px){ 
+    
+    nav .stage{
+        font-size: 10px !important;
+        padding-left: 4px;
+        padding-right: 4px;
+    }   
+    nav .stage .circle{
+        width: 100% !important;
+    }
+    
+    nav .stage span.stage-label{
+        display: none;
+    }
+
+    
+}
+/* end body */
+
+/* start footer */
+
+footer ul li i{
+    font-size: 1.5em;
+    color: #6c757d;
+}
+/* end footer */

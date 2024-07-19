@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/personal_info.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="d-flex flex-column justify-content-between " style=" font-family: 'Lexend', sans-serif">
+    <!-- start header -->
+    <nav class="navbar navbar-expand-md navbar-light border-bottom position-fixed top-0 start-0 end-0 ">
+        <div class="container-lg ">
+          <img src="/img/Resume.jpg" class="image" id="logo">
+          <div class="row pipeline position-relative ">
+            <span class="line"></span>
+            <div class="stage col d-flex flex-column justify-content-center align-items-center fs-6"
+                 data-after-content="1">
+              <div class="circle circle-active rounded-circle border  d-flex justify-content-center align-items-center">
+                <i class="bi bi-file-earmark-person d-flex justify-content-center align-items-center"></i>
+              </div>
+              <span class="stage-label mt-1 span-active" >Per.Info</span>
+            </div>
+            <div class="stage col d-flex flex-column justify-content-center align-items-center fs-6"
+                 data-after-content="2">
+              <div class="circle circle-active rounded-circle border  d-flex justify-content-center align-items-center">
+                <i class="bi bi-archive d-flex justify-content-center align-items-center"></i>
+              </div>
+              <span class="stage-label mt-1 span-active" >Experiecne</span>
+            </div>
+            <div class="stage col d-flex flex-column justify-content-center align-items-center fs-6"
+                 data-after-content="3">
+              <div class="circle circle-active rounded-circle border  d-flex justify-content-center align-items-center">
+                <i class="bi bi-building d-flex justify-content-center align-items-center"></i>
+              </div>
+              <span class="stage-label mt-1 span-active" >Education</span>
+            </div>
+            <div class="stage col d-flex flex-column justify-content-center align-items-center fs-6"
+                 data-after-content="4">
+              <div class="circle circle-active rounded-circle border  d-flex justify-content-center align-items-center">
+                <i class="bi bi-bar-chart d-flex justify-content-center align-items-center"></i>
+              </div>
+              <span class="stage-label mt-1 span-active" >Skills</span>
+            </div>
+            <div class="stage col d-flex flex-column justify-content-center align-items-center fs-6"
+                 data-after-content="5">
+              <div class="circle  rounded-circle border  d-flex justify-content-center align-items-center">
+                <i class="bi bi-brightness-alt-high d-flex justify-content-center align-items-center"></i>
+              </div>
+              <span class="stage-label mt-1" >Summary</span>
+            </div>
+            <div class="stage col d-flex flex-column justify-content-center align-items-center fs-6"
+                 data-after-content="6">
+              <div class="circle  rounded-circle border  d-flex justify-content-center align-items-center">
+                <i class="bi bi-cloud-download d-flex justify-content-center align-items-center"></i>
+              </div>
+              <span class="stage-label mt-1" >Download</span>
+            </div>
+          </div>
+        </div>
+    </nav>
+    <!-- end header -->
+
+    <!-- start body -->
+      <div class="content pt-5 ">
+        <div class="container-md">
+          <form action="/skill/<%= id %>" method="post">
+            <div class="row skills mt-4">
+                <div class="mb-4 col-12">
+                  <h3>SKILLS</h3>
+                  <p>Highlight 6-8 of your top skills.</p>
+                </div>
+                <input type="number" name="skills_id" value="<%= skills.length-1 %>" id="skills_id" hidden style="display: hidden;">
+                <% for(let i=0; i< locals.skills.length; i++) {%>
+                <div class="col-md-6 mb-4" id="skillColumn_<%= i %>">
+                  <label for="SkillInput_<%= i %>" class="form-label">Skill</label>
+                  <input type="text" class="form-control" name="skill_<%= i %>" value="<%= skills[i].skill %>" id="SkillInput_<%= i %>" placeholder="Enter Skill" required>
+                </div>
+                <div class="col-md-4 mb-4" id="levelColumn_<%= i %>">
+                  <label for="LevelInput_<%= i %>" class="form-label">Level</label>
+                  <select class="form-select" name="level_<%= i %>"  aria-label="Default select example" id="LevelInput_<%= i %>" required>
+                    <option value="1" <%= skills[i].level == '1' ? 'selected' : '' %>>Beginner</option>
+                    <option value="2" <%= skills[i].level == '2' ? 'selected' : '' %>>Professional</option>
+                    <option value="3" <%= skills[i].level == '3' ? 'selected' : '' %>>Expert</option>
+                  </select>
+                </div>
+                <div onclick="onRemoveSkill(this.id)"
+                 class="col-md-2 mb-4 d-flex justify-content-center align-items-end py-md-3" id="trashColumn_<%= i %>">
+                    <i class="bi bi-trash"></i>
+                </div>
+                <% } %>
+              </div>
+          
+            <div class="pt-5 mt-5 w-100 buttons d-flex justify-content-between">
+                <button class="btn btn-secondary"  type="button"><a href="/education/display_edt/<%= id %>" class="list-group-item list-group-item-action pencil-trash" style="color: white;">Back</a></button>
+                <button class="btn btn-light border fs-5" type="button" onclick="addSkill()"><i class="bi bi-plus-circle-dotted"></i> Add Skill </button>
+                <button class="btn btn-primary" type="submit">Save & Next</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    <!-- end body -->
+
+    <!-- start footer -->
+    <div class="footer container-md mt-2">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-2 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+          <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+          </a>
+          <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+          <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-twitter"></i></a></li>
+          <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-instagram"></i></a></li>
+          <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-facebook"></i></a></li>
+        </ul>
+      </footer>
+    </div>
+    <!-- end footer -->
+    <script>
+      let id=0;
+
+      function onRemoveSkill(el){
+        
+        let currentId= el.substr(el.indexOf('_')+1);
+        document.getElementById(el).remove();
+        document.getElementById("skillColumn_"+currentId).remove();
+        document.getElementById("levelColumn_"+currentId).remove();
+
+        id=parseInt($("#skills_id").val())-1;
+        $("#skills_id").val(id)
+      }
+
+      function addSkill(){
+        id=parseInt($("#skills_id").val())+1;
+        $("#skills_id").val(id)
+        $(".skills").append(`
+        <div class="mb-4 col-md-6" id="skillColumn_${id}">
+              <label for="SkillInput_${id}"  class="form-label">Skill</label>
+              <input type="text" class="form-control" name="skill_${id}" id="SkillInput_${id}" placeholder="Enter Skill name" required>
+            </div>
+            <div class="mb-4 col-md-4" id="levelColumn_${id}">
+              <label for="LevelInput_${id}"  class="form-label">Level</label>
+              <select class="form-select" name="level_${id}" aria-label="Default select example" id="LevelInput_${id}" required>
+                <option value="1">Beginner</option>
+                <option value="2" selected>Professional</option>
+                <option value="3">Expert</option>
+              </select>
+          </div>
+          <div onclick="onRemoveSkill(this.id)"
+                 class="col-md-2 mb-4 d-flex justify-content-center align-items-end py-md-3" id="trashColumn_${id}">
+                    <i class="bi bi-trash"></i>
+            </div>
+            `)
+      }
+
+      let myFunction = ()=>{
+      let circle_size = parseFloat($( ".circle" ).eq(0).css('width'));
+      let navHeight = parseFloat($("nav").css('height'));
+
+      $("body").css("padding-top", navHeight)
+
+      $( ".circle" ).each(function( index ) {
+        $( this ).css('height', circle_size)
+        
+      });
+      
+      $(".line").css({top: circle_size/2});
+    }
+    $().ready(myFunction)
+    $( window ).on( "resize", myFunction );
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var navImage = document.getElementById('logo');
+
+      navImage.addEventListener('click', function() {
+        var linkToOpen = document.createElement('a');
+        linkToOpen.setAttribute('href', '/')
+
+        linkToOpen.click();
+      });
+    });
+    </script>
+</body>
+</html>
